@@ -22,8 +22,7 @@
    - [4.2 Esquema de Request](#42-esquema-de-request)
    - [4.3 Esquema de Response](#43-esquema-de-response)
    - [4.4 Ejemplos con Postman / curl](#44-ejemplos-con-postman--curl)
-5. [Despliegue en Vercel](#5-despliegue-en-vercel)
-6. [Decisiones de Diseño](#6-decisiones-de-diseño)
+5. [Decisiones de Diseño](#5-decisiones-de-diseño)
 
 ---
 
@@ -215,16 +214,7 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-## 5. Despliegue en Vercel
-
-1. Sube este repositorio a GitHub, asegurándote de incluir la carpeta `artifacts/`.
-2. Conecta el repositorio a **Vercel**.
-3. El archivo `vercel.json` autoconfigurará el despliegue usando *Serverless Functions* de Python.
-4. La API usará el modelo preentrenado al instante en la nube.
-
----
-
-## 6. Decisiones de Diseño
+## 5. Decisiones de Diseño
 
 | Decisión | Razón de la elección |
 |----------|----------------------|
