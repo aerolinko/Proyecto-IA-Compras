@@ -1,0 +1,20 @@
+{
+  "trained_at": "2026-05-12T04:12:28.790525+00:00",
+  "input_dim": 73,
+  "test_accuracy": 0.8947,
+  "threshold": 0.44,
+  "best_hyperparameters": {
+    "n_layers": 2,
+    "activation": "relu",
+    "learning_rate": 0.006983017262485213,
+    "units_1": 96,
+    "units_2": 256,
+    "units_3": 256,
+    "units_4": 64,
+    "tuner/epochs": 6,
+    "tuner/initial_epoch": 2,
+    "tuner/bracket": 3,
+    "tuner/round": 1,
+    "tuner/trial_id": "0011"
+  }
+}
