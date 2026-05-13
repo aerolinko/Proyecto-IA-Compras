@@ -22,7 +22,10 @@
    - [4.2 Esquema de Request](#42-esquema-de-request)
    - [4.3 Esquema de Response](#43-esquema-de-response)
    - [4.4 Ejemplos con Postman / curl](#44-ejemplos-con-postman--curl)
-5. [Decisiones de Diseño](#5-decisiones-de-diseño)
+5. [Instrucciones de Ejecución Local](#5-instrucciones-de-ejecución-local)
+   - [5.1 Ejecutar el Entrenamiento](#51-ejecutar-el-entrenamiento)
+   - [5.2 Ejecutar la API REST](#52-ejecutar-la-api-rest)
+6. [Decisiones de Diseño](#6-decisiones-de-diseño)
 
 ---
 
@@ -215,7 +218,50 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-## 5. Decisiones de Diseño
+## 5. Instrucciones de Ejecución Local
+
+### 5.0 Preparar el Entorno (Windows y macOS/Linux)
+
+Es altamente recomendable usar un entorno virtual para instalar las dependencias antes de ejecutar el código.
+
+**En Windows (PowerShell / CMD):**
+```powershell
+python -m venv .venv
+.\.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+**En macOS / Linux:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 5.1 Ejecutar el Entrenamiento
+
+Para entrenar el modelo desde cero y generar los artefactos (modelo Keras, preprocesador y metadatos), asegúrate de haber activado tu entorno virtual y tener el dataset en `data/dataset_shop.csv`. Luego ejecuta:
+
+```bash
+python train.py
+```
+
+Esto ejecutará el pipeline de preprocesamiento, la búsqueda de hiperparámetros con Hyperband y guardará los resultados en la carpeta `artifacts/`.
+
+### 5.2 Ejecutar la API REST
+
+Para levantar el servidor localmente y probar los endpoints, utiliza `uvicorn` apuntando a la aplicación en `api/index.py`. 
+
+
+```bash
+python -m uvicorn api.index:app --reload
+```
+
+La API estará disponible en `http://localhost:8000`. Puedes acceder a la documentación interactiva Swagger UI en `http://localhost:8000/docs`.
+
+---
+
+## 6. Decisiones de Diseño
 
 | Decisión | Razón de la elección |
 |----------|----------------------|
@@ -224,4 +270,3 @@ curl -X POST http://localhost:8000/predict \
 | **Tiempo Promedio por Página** | Destruye la altísima colinealidad natural entre Páginas Totales vs Minutos Totales. |
 | **Minimizar `val_loss`** | Obliga al modelo a priorizar la reducción de errores en lugar del *Accuracy* falso por desbalance. |
 | **FastAPI + Swagger** | Documentación `/docs` generada en vivo con inyección de datos de prueba, sin necesidad de hacer frontend. |
-| **Dependencias** | Se dividieron las dependencias en `requirements.txt` y `requirements-train.txt` para poder acomodar mejor el despliegue en *vercel*. |
