@@ -95,6 +95,7 @@ El **UCI Online Shoppers Purchasing Intention Dataset** contiene 12,330 sesiones
 
 Hallazgos clave del EDA:
 - **`PageValues`** es el predictor más fuerte: sesiones con compra tienen valores significativamente altos.
+- Se encontraron **125** entradas *repetidas*, y a pesar de tener un dataset muy sesgado a la "No Compra", ya que no se posee una medida de ID u otra forma que permita garantizar la independencia de estas entradas entre sí, se tomó la decisión de descartarlas para evitar el sesgo hacia *features* de esa forma, y así garantizar un mejor entrenamiento y clasificación con datos reales.
 - **`BounceRates`** y **`ExitRates`** correlacionan negativamente con compra (usuarios que rebotan no compran) y son altamente redundantes entre sí.
 
 ### 3.3 Limpieza e Imputación
