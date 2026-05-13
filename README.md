@@ -224,3 +224,4 @@ curl -X POST http://localhost:8000/predict \
 | **Tiempo Promedio por Página** | Destruye la altísima colinealidad natural entre Páginas Totales vs Minutos Totales. |
 | **Minimizar `val_loss`** | Obliga al modelo a priorizar la reducción de errores en lugar del *Accuracy* falso por desbalance. |
 | **FastAPI + Swagger** | Documentación `/docs` generada en vivo con inyección de datos de prueba, sin necesidad de hacer frontend. |
+| **Dependencias** | Se dividieron las dependencias en `requirements.txt` y `requirements-train.txt` para poder acomodar mejor el despliegue en *vercel*. |
