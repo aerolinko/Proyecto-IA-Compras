@@ -25,6 +25,7 @@
 5. [Instrucciones de Ejecución Local](#5-instrucciones-de-ejecución-local)
    - [5.1 Ejecutar el Entrenamiento](#51-ejecutar-el-entrenamiento)
    - [5.2 Ejecutar la API REST](#52-ejecutar-la-api-rest)
+   - [5.3 Ejecutar con Docker](#53-ejecutar-con-docker)
 6. [Decisiones de Diseño](#6-decisiones-de-diseño)
 
 ---
@@ -258,6 +259,22 @@ python -m uvicorn api.index:app --reload
 ```
 
 La API estará disponible en `http://localhost:8000`. Puedes acceder a la documentación interactiva Swagger UI en `http://localhost:8000/docs`.
+
+### 5.3 Ejecutar con Docker
+
+Para ejecutar con docker se debe ejecutar el comando
+
+```bash
+docker build -t proyecto-ia 
+```
+
+Una vez la imagen se termine de montar, se usa el comando
+
+```bash
+docker run -d -p 8000:8000 --name proyecto-ia-server proyecto-ia
+```
+
+Cuando el servidor inicie, se podrá usar con normalidad
 
 ---
 
